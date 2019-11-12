@@ -1,18 +1,23 @@
 const express = require('express');
-const MaterialController = require('./Controller/MaterialController.js');
-const routes = express.Router();
-const pool = require('./Model/connection')
 
-routes.post('/teste',async(req,res)=>{
-    const result = await MaterialController.teste();
-    console.log(req.body);
-    console.log(result)
+const routes = express.Router();
+
+const MaterialController = require('./Controller/MaterialController.js');
+const UsuarioController = require('./Controller/UsuarioController');
+
+routes.post('/login',async(req,res)=>{
+    const {usuario,senha} = req.body
+    const result = await UsuarioController.login(usuario,senha);
     res.json(result)
 });
-routes.post('/testing',async(req,res)=>{
-    const result = await pool.query("select * from material;")
-    console.log(req.body)
-    console.log(result)
+
+routes.post('/all',async(req,res)=>{
+    const result = await MaterialController.getAllMateriais();
+    res.json(result)
+});
+routes.post('/matbypat',async(req,res)=>{
+    const codPat = req.body.codPat
+    const result = await MaterialController.getMaterialByPat(codPat)
     res.json(result)
 });
 

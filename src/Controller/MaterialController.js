@@ -1,7 +1,9 @@
 const materialDAO = require('../Model/MaterialDAO')
 module.exports= {
-    teste(){
-       
-         return materialDAO.read();
+    getAllMateriais(){
+        return materialDAO.read();
+    },
+    getMaterialByPat(cod){
+        return materialDAO.metrialByPat(cod)
     }
 }
