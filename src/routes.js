@@ -4,8 +4,8 @@ const routes = express.Router();
 const pool = require('./Model/connection')
 
 routes.post('/teste',async(req,res)=>{
-    const result =  MaterialController.teste()
-    console.log(req.body)
+    const result =  MaterialController.teste();
+    console.log(req.body);
     console.log(result)
     res.json(result)
 });
