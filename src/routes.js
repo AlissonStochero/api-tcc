@@ -6,6 +6,7 @@ const MaterialController = require('./Controller/MaterialController.js');
 const UsuarioController = require('./Controller/UsuarioController');
 
 routes.post('/login',async(req,res)=>{
+    console.log(req.body)
     const {usuario,senha} = req.body
     const result = await UsuarioController.login(usuario,senha);
     res.json(result)
