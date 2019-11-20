@@ -4,6 +4,8 @@ const routes = express.Router();
 
 const MaterialController = require('./Controller/MaterialController.js');
 const UsuarioController = require('./Controller/UsuarioController');
+const UnidadeController = require('./Controller/UnidadeController')
+const DepartamentoController = require('./Controller/DepartamentoController')
 
 routes.post('/login',async(req,res)=>{
     console.log(req.body)
@@ -21,5 +23,14 @@ routes.post('/matbypat',async(req,res)=>{
     const result = await MaterialController.getMaterialByPat(codPat)
     res.json(result)
 });
+
+routes.post('/allunidades',async(req,res)=>{
+    const result = await UnidadeController.getAllUnidades()
+    res.json(result)
+})
+routes.post('/alldepto',async(req,res)=>{
+    const result = await DepartamentoController.getAllDepto()
+    res.json(result)
+})
 
 module.exports = routes;
